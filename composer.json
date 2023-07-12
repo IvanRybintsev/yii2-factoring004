@@ -1,0 +1,25 @@
+{
+  "name": "bnpl-partners/yii2-factoring004",
+  "description": "Добавляет способ оплаты Рассрочка 0-0-4",
+  "keywords": ["yii2", "yii2", "application", "bnpl-partners", "payments"],
+  "homepage": "https://bnpl.kz",
+  "type": "yii2-extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "BnplPartners",
+      "email": ""
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "yiisoft/yii2": "*",
+    "bnpl-partners/factoring004": "^2.0 || ^3.0",
+    "dvizh/yii2-order": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "BnplPartners\\Factoring004Yii2\\": "src\\"
+    }
+  }
+}
