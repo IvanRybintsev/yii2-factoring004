@@ -1,5 +1,6 @@
+<div<?= !empty($styles) ? ' style="' . $styles . '"' : ''?> id="<?=$blockId?>"></div>
 <script type="text/javascript">
-    window.onload = function() {
+    window.addEventListener('load', function() {
         let container = document.getElementById('<?=$blockId?>');
         let totalAmount = <?=$amount?>;
 
@@ -9,6 +10,5 @@
         });
 
         schedule.renderTo(container);
-    }
+    });
 </script>
-<div<?= !empty($styles) ? ' style="' . $styles . '"' : ''?> id="<?=$blockId?>"></div>
