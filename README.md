@@ -13,7 +13,7 @@ php composer require bnplpartners/yii2-factoring004
 ...
 'modules' => [
     'factoring004' => [
-        'class' => 'BnplPartners\Yii2Factoring004'
+        'class' => 'BnplPartners\Factoring004Yii2'
     ],
 ],
 ...
