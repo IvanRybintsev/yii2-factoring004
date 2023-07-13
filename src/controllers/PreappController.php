@@ -59,9 +59,9 @@ class PreappController extends Controller
         if ($order->payment != 'no') {
             return 'Order already paid';
         }
-
-//        echo '<pre>' . print_r($order->payment_type_id, true) . '</pre>';
-//        die();
+        if (!array_key_exists('factoring004', Yii::$app->params)) {
+            return 'Invalid factoring004 configurations';
+        }
 
         $responseType = Yii::$app->params['factoring004']['clientRoute'];
         $baseUri = Yii::$app->params['factoring004']['baseUri'];
