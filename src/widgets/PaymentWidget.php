@@ -35,10 +35,16 @@ class PaymentWidget extends Widget
     public function run()
     {
         parent::run();
-        Yii::$app->getView()->on(View::EVENT_END_BODY, function() {
-            echo $this->render('widget', ['clientRoute' => $this->clientRoute]);
-        });
-        return $this->render('payment-button',['action' => $this->action, 'clientRoute' => $this->clientRoute, 'buttonClass' => $this->buttonClass]);
+        if (!empty($this->orderId)) {
+            if ($this->clientRoute == 'modal') {
+                Yii::$app->getView()->on(View::EVENT_END_BODY, function() {
+                    echo $this->render('widget');
+                });
+            }
+            return $this->render('payment-button',['action' => $this->action, 'clientRoute' => $this->clientRoute, 'buttonClass' => $this->buttonClass]);
+        } else {
+            return '';
+        }
     }
 
 }

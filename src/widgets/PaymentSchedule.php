@@ -20,6 +20,9 @@ class PaymentSchedule extends Widget
     public function run()
     {
         parent::run();
-        return $this->render('schedule',['amount' => $this->amount, 'styles' => $this->styles, 'blockId' => $this->blockId]);
+        if ($this->amount > 0) {
+            return $this->render('schedule',['amount' => $this->amount, 'styles' => $this->styles, 'blockId' => $this->blockId]);
+        }
+        return '';
     }
 }
