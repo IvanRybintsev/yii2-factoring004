@@ -11,6 +11,10 @@ use yii\web\Controller;
 
 class PostlinkController extends Controller
 {
+    const STATUS_PREAPPROVED = 'preapproved';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_DECLINED = 'declined';
+
     public function behaviors()
     {
         return [
@@ -38,15 +42,15 @@ class PostlinkController extends Controller
 
             $this->validateSignature($data);
 
-            if ($data['status'] == 'preapproved') {
+            if ($data['status'] == self::STATUS_PREAPPROVED) {
                 echo '{"response":"preapproved"}';
             }
 
-            if ($data['status'] == 'declined') {
+            if ($data['status'] == self::STATUS_DECLINED) {
                 echo '{"response":"declined"}';
             }
 
-            if ($data['status'] == 'completed') {
+            if ($data['status'] == self::STATUS_COMPLETED) {
                 echo '{"response":"ok"}';
             }
         } catch (Exception $e) {
