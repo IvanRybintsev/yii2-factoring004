@@ -27,7 +27,8 @@ php composer require bnplpartners/yii2-factoring004
         'partnerName' => 'example.shop',
         'partnerCode' => 'example.shop',
         'pointCode' => '01-1111-L1',
-        'clientRoute' => 'redirect'
+        'clientRoute' => 'redirect',
+        'order_paid_status' => 'done'
     ]
 ```
 4. Добавить способ оплаты

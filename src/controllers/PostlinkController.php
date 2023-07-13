@@ -51,6 +51,10 @@ class PostlinkController extends Controller
             }
 
             if ($data['status'] == self::STATUS_COMPLETED) {
+
+                $order = Yii::$app->order->get($data['billNumber']);
+                $order->setStatus(Yii::$app->params['factoring004']['order_paid_status'])->save();
+
                 echo '{"response":"ok"}';
             }
         } catch (Exception $e) {
