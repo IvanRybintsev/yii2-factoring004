@@ -10,6 +10,7 @@ class PaymentSchedule extends Widget
     public $amount = 0;
     public $styles = '';
     public $blockId = 'factoring004-schedule';
+    public $paymentTypeId = false;
 
     public function init()
     {
@@ -21,7 +22,8 @@ class PaymentSchedule extends Widget
     {
         parent::run();
         if ($this->amount > 0) {
-            return $this->render('schedule',['amount' => $this->amount, 'styles' => $this->styles, 'blockId' => $this->blockId]);
+            return $this->render('schedule',['amount' => $this->amount, 'styles' => $this->styles, 'blockId' => $this->blockId,
+                'paymentTypeId' => $this->paymentTypeId]);
         }
         return '';
     }
