@@ -7,8 +7,8 @@ class m100723_123400_insert_payment_method extends \yii\db\Migration
     public function up()
     {
         $this->insert('order_payment_type', [
-            'slug' => 'yii2-factoring004-payment',
-            'name' => 'Рассрочка 0-0-4',
+            'slug' => 'factoring004-payment',
+            'name' => 'Рассрочка 0-0-4. Оформи за 10 секунд',
             'description' => '<p>Купи сейчас, плати потом! Быстрое и удобное оформление рассрочки на 4 месяца. Моментальное одобрение, без комиссий и процентов. Для заказов суммой от 6 000 до 200 000 тг.</p>',
             'name_kz' => 'Рассрочка 0-0-4',
             'name_en' => 'Factoring 0-0-4',
