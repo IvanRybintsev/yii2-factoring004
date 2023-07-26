@@ -2,9 +2,9 @@
 
 namespace BnplPartners\Factoring004Yii2\widgets;
 
+use dvizh\order\models\Order;
 use Yii;
 use yii\base\Widget;
-use yii\helpers\Url;
 use yii\web\View;
 
 class PaymentWidget extends Widget
@@ -36,12 +36,26 @@ class PaymentWidget extends Widget
     {
         parent::run();
         if (!empty($this->orderId)) {
-            if ($this->clientRoute == 'modal') {
-                Yii::$app->getView()->on(View::EVENT_END_BODY, function() {
-                    echo $this->render('widget');
-                });
+            /**
+             * @var $order Order
+             */
+            $order = Yii::$app->order->get($this->orderId);
+
+            $paymentMethod = Yii::$app->db->createCommand('SELECT id FROM order_payment_type WHERE slug=:slug')
+                ->bindValue('slug','factoring004-payment')
+                ->queryOne();
+
+            if ($paymentMethod['id'] != $order->payment_type_id) {
+                return '';
+            } else {
+                if ($this->clientRoute == 'modal') {
+                    Yii::$app->getView()->on(View::EVENT_END_BODY, function() {
+                        echo $this->render('widget');
+                    });
+                }
+                return $this->render('payment-button',['action' => $this->action, 'clientRoute' => $this->clientRoute, 'buttonClass' => $this->buttonClass]);
             }
-            return $this->render('payment-button',['action' => $this->action, 'clientRoute' => $this->clientRoute, 'buttonClass' => $this->buttonClass]);
+
         } else {
             return '';
         }
