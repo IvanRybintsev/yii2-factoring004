@@ -77,7 +77,7 @@ class PreappController extends Controller
                 'itemCategory' => '',
                 'itemQuantity' => (int) $item->getCount(),
                 'itemPrice' => (int) ceil($item->getPrice()),
-                'itemSum' => (int) ceil($item->getCost()),
+                'itemSum' => (int) ceil($item->getPrice() * $item->getCount()),
             ];
         }, $order->getElements()));
 
