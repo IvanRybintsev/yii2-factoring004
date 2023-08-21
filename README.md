@@ -56,3 +56,14 @@ echo PaymentSchedule::widget(['amount' => 10000, 'blockId' => 'block_id', 'style
 - __amount__ - _обязательный_ -  сумма заказа, без него график выводиться не будет
 - __blockId__ - _опциональный_ - идентификатор html блока в котором будет находиться график платежей, по-умолчанию имеет значение - factoring004-schedule
 - __styles__ - _опциональный_ - строка с набором css стилей для блока в котором будет находиться график платежей, по-умолчанию имеет пустое значение
+
+Обработчик события создания заказа
+-----------
+В настройках подключения модуля dvizh/yii2-order нужно добавить параметр "as create" с значением "\BnplPartners\Factoring004Yii2\behaviors\OrderCreated":
+```php
+'order' => [
+    'class' => 'dvizh\order\Module',
+    'successUrl' => '/success',
+    'adminNotificationEmail' => 'test@example.ru',
+    'as create' => '\BnplPartners\Factoring004Yii2\behaviors\OrderCreated',
+]
